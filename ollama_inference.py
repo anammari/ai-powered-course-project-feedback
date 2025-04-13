@@ -50,7 +50,7 @@ if user_prompt:
     # Generate response from LLM
     response_content = "No response generated."
     with st.spinner('Generating response...'):
-        if model in ['llama3.2', 'phi4', 'deepseek-r1:14b']:
+        if model in ['gemma3:12b', 'deepseek-r1:14b']:
             response = ollama.chat(model=model, messages=[{"role": "user", "content": full_prompt}])
             response_content = response['message']['content']
     
