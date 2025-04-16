@@ -12,6 +12,7 @@ A professional, fully functional AI-Powered Course Project Feedback Generator bu
   - Llama 4 Scout (via KlusterAI)
   - Ollama Gemma 3
   - Ollama Deepseek R1
+  - Ollama Llama 3.2
 - **Dynamic Prompt Engineering** for generating structured, actionable feedback
 - **Flexible Feedback Options** including failing criteria feedback and learner-requested items
 
@@ -53,12 +54,14 @@ HF_TOKEN=your_huggingface_token
 # Pull required models
 ollama pull gemma3:12b
 ollama pull deepseek-r1:14b
+ollama pull llama3:3.2
 ```
 
 ## Usage
 
 1. Start the Streamlit application:
 ```bash
+cd app
 streamlit run app.py
 ```
 
@@ -74,7 +77,7 @@ streamlit run app.py
 
 4. Review the generated feedback and download it if desired
 
-## Files Structure
+## Files Structure in the `app` folder
 
 - `app.py` - Main Streamlit application
 - `llm_inference.py` - Module containing functions for each LLM provider
