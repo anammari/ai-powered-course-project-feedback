@@ -217,3 +217,36 @@ def run_ollama_deepseek(prompt):
         return response_content
     except Exception as e:
         return f"Error with Ollama Deepseek R1: {str(e)}"
+    
+# Ollama Llama 3.2 inference
+def run_ollama_llama(prompt):
+    """
+    Run inference with Ollama Llama 3.2 model.
+    """
+    try:
+        import ollama
+        
+        # Model name
+        model = "llama3.2:latest"
+        
+        # Prepare messages
+        messages = [{
+            "role": "user", 
+            "content": prompt
+        }]
+        
+        # Run inference
+        response = ollama.chat(model=model, messages=messages)
+        response_content = response['message']['content']
+        
+        # Clean response by removing content inside <think> tags
+        def remove_thinking_tags(text):
+            cleaned_text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
+            return cleaned_text.strip()
+        
+        if '<think>' in response_content:
+            response_content = remove_thinking_tags(response_content)
+            
+        return response_content
+    except Exception as e:
+        return f"Error with Llama 3.2 model: {str(e)}"
