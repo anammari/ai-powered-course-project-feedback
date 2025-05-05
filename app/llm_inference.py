@@ -152,101 +152,65 @@ def run_llama4_scout_klusterai(prompt):
     except Exception as e:
         return f"Error with Llama 4 Scout (KlusterAI): {str(e)}"
 
-# Ollama Gemma 3 inference
-def run_ollama_gemma3(prompt):
-    """
-    Run inference with Ollama Gemma 3 model.
-    """
-    try:
-        import ollama
-        
-        # Model name
-        model = "gemma3:12b"
-        
-        # Prepare messages
-        messages = [{
-            "role": "user", 
-            "content": prompt
-        }]
-        
-        # Run inference
-        response = ollama.chat(model=model, messages=messages)
-        response_content = response['message']['content']
-        
-        # Clean response by removing content inside <think> tags
-        def remove_thinking_tags(text):
-            cleaned_text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
-            return cleaned_text.strip()
-        
-        if '<think>' in response_content:
-            response_content = remove_thinking_tags(response_content)
-            
-        return response_content
-    except Exception as e:
-        return f"Error with Ollama Gemma 3: {str(e)}"
+# Ollama Phi-4 Mini Reasoning inference
 
-# Ollama Deepseek R1 inference
-def run_ollama_deepseek(prompt):
+def run_ollama_phi4_mini_reasoning(prompt):
     """
-    Run inference with Ollama Deepseek R1 model.
-    """
-    try:
-        import ollama
-        
-        # Model name
-        model = "deepseek-r1:14b"
-        
-        # Prepare messages
-        messages = [{
-            "role": "user", 
-            "content": prompt
-        }]
-        
-        # Run inference
-        response = ollama.chat(model=model, messages=messages)
-        response_content = response['message']['content']
-        
-        # Clean response by removing content inside <think> tags
-        def remove_thinking_tags(text):
-            cleaned_text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
-            return cleaned_text.strip()
-        
-        if '<think>' in response_content:
-            response_content = remove_thinking_tags(response_content)
-            
-        return response_content
-    except Exception as e:
-        return f"Error with Ollama Deepseek R1: {str(e)}"
-    
-# Ollama Llama 3.2 inference
-def run_ollama_llama(prompt):
-    """
-    Run inference with Ollama Llama 3.2 model.
+    Run inference with Ollama phi4-mini-reasoning:latest model.
     """
     try:
         import ollama
-        
-        # Model name
-        model = "llama3.2:latest"
-        
-        # Prepare messages
-        messages = [{
-            "role": "user", 
-            "content": prompt
-        }]
-        
-        # Run inference
+        model = "phi4-mini-reasoning:latest"
+        messages = [{"role": "user", "content": prompt}]
         response = ollama.chat(model=model, messages=messages)
         response_content = response['message']['content']
-        
-        # Clean response by removing content inside <think> tags
         def remove_thinking_tags(text):
             cleaned_text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
             return cleaned_text.strip()
-        
         if '<think>' in response_content:
             response_content = remove_thinking_tags(response_content)
-            
         return response_content
     except Exception as e:
-        return f"Error with Llama 3.2 model: {str(e)}"
+        return f"Error with Ollama Phi-4 Mini Reasoning: {str(e)}"
+
+# Ollama Mistral Small 3.1 inference
+
+def run_ollama_mistral_small3(prompt):
+    """
+    Run inference with Ollama mistral-small3.1:24b-instruct-2503-q4_K_M model.
+    """
+    try:
+        import ollama
+        model = "mistral-small3.1:24b-instruct-2503-q4_K_M"
+        messages = [{"role": "user", "content": prompt}]
+        response = ollama.chat(model=model, messages=messages)
+        response_content = response['message']['content']
+        def remove_thinking_tags(text):
+            cleaned_text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
+            return cleaned_text.strip()
+        if '<think>' in response_content:
+            response_content = remove_thinking_tags(response_content)
+        return response_content
+    except Exception as e:
+        return f"Error with Ollama Mistral Small 3.1: {str(e)}"
+
+# Ollama Qwen3 14B inference
+
+def run_ollama_qwen3(prompt):
+    """
+    Run inference with Ollama qwen3:14b model.
+    """
+    try:
+        import ollama
+        model = "qwen3:14b"
+        messages = [{"role": "user", "content": prompt}]
+        response = ollama.chat(model=model, messages=messages)
+        response_content = response['message']['content']
+        def remove_thinking_tags(text):
+            cleaned_text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
+            return cleaned_text.strip()
+        if '<think>' in response_content:
+            response_content = remove_thinking_tags(response_content)
+        return response_content
+    except Exception as e:
+        return f"Error with Ollama Qwen3 14B: {str(e)}"

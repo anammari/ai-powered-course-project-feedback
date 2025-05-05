@@ -22,9 +22,9 @@ from llm_inference import (
     run_gemini_pro, 
     run_deepseek_r1_together, 
     run_llama4_scout_klusterai, 
-    run_ollama_gemma3, 
-    run_ollama_deepseek,
-    run_ollama_llama
+    run_ollama_phi4_mini_reasoning, 
+    run_ollama_mistral_small3, 
+    run_ollama_qwen3
 )
 
 # Debug helper function
@@ -224,9 +224,9 @@ def main():
                 "Gemini 2.5 Pro",
                 "Deepseek R1 (Together)",
                 "Llama 4 Scout (KlusterAI)",
-                "Ollama Gemma 3",
-                "Ollama Deepseek R1",
-                "Ollama Llama 3.2"
+                "Ollama Phi-4 Mini Reasoning",
+                "Ollama Mistral Small 3.1",
+                "Ollama Qwen3 14B"
             ]
         )
         
@@ -377,12 +377,12 @@ def main():
                     feedback = run_deepseek_r1_together(prompt)
                 elif selected_llm == "Llama 4 Scout (KlusterAI)":
                     feedback = run_llama4_scout_klusterai(prompt)
-                elif selected_llm == "Ollama Gemma 3":
-                    feedback = run_ollama_gemma3(prompt)
-                elif selected_llm == "Ollama Deepseek R1":
-                    feedback = run_ollama_deepseek(prompt)
-                elif selected_llm == "Ollama Llama 3.2":
-                    feedback = run_ollama_llama(prompt)
+                elif selected_llm == "Ollama Phi-4 Mini Reasoning":
+                    feedback = run_ollama_phi4_mini_reasoning(prompt)
+                elif selected_llm == "Ollama Mistral Small 3.1":
+                    feedback = run_ollama_mistral_small3(prompt)
+                elif selected_llm == "Ollama Qwen3 14B":
+                    feedback = run_ollama_qwen3(prompt)
                 else:
                     feedback = "Error: Selected LLM not implemented"
                 end_time = time.time()

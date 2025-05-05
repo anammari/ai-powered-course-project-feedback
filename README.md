@@ -10,9 +10,9 @@ A professional, fully functional AI-Powered Course Project Feedback Generator bu
   - Gemini 2.5 Pro
   - Deepseek R1 (via Together API)
   - Llama 4 Scout (via KlusterAI)
-  - Ollama Gemma 3
-  - Ollama Deepseek R1
-  - Ollama Llama 3.2
+  - Ollama Phi-4 Mini Reasoning
+  - Ollama Mistral Small 3.1
+  - Ollama Qwen3 14B
 - **Dynamic Prompt Engineering** for generating structured, actionable feedback
 - **Flexible Feedback Options** including failing criteria feedback and learner-requested items
 
@@ -52,9 +52,9 @@ HF_TOKEN=your_huggingface_token
 ```bash
 # Install Ollama: https://ollama.com/download
 # Pull required models
-ollama pull gemma3:12b
-ollama pull deepseek-r1:14b
-ollama pull llama3:3.2
+ollama pull phi4-mini-reasoning:latest
+ollama pull mistral-small3.1:24b-instruct-2503-q4_K_M
+ollama pull qwen3:14b
 ```
 
 ## Usage
