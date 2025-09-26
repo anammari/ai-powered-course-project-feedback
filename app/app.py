@@ -19,12 +19,8 @@ DEBUG = False
 # Import LLM module
 from llm_inference import (
     run_gemini_flash, 
-    run_gemini_pro, 
     run_deepseek_r1_together, 
-    run_llama4_scout_klusterai, 
-    run_ollama_phi4_mini_reasoning, 
-    run_ollama_mistral_small3, 
-    run_ollama_qwen3
+    run_ollama_gpt_oss
 )
 
 # Debug helper function
@@ -220,13 +216,9 @@ def main():
         selected_llm = st.selectbox(
             "Choose LLM", 
             [
-                "Gemini 2.0 Flash",
-                "Gemini 2.5 Pro",
-                "Deepseek R1 (Together)",
-                "Llama 4 Scout (KlusterAI)",
-                "Ollama Phi-4 Mini Reasoning",
-                "Ollama Mistral Small 3.1",
-                "Ollama Qwen3 14B"
+                "Gemini 2.5 Flash",
+                "GPT-OSS 120B (Together)",
+                "Ollama GPT-OSS 20B"
             ]
         )
         
@@ -369,20 +361,12 @@ def main():
                 debug_log("Generated Prompt", prompt)
             with st.spinner(f"Generating feedback using {selected_llm}..."):
                 start_time = time.time()
-                if selected_llm == "Gemini 2.0 Flash":
+                if selected_llm == "Gemini 2.5 Flash":
                     feedback = run_gemini_flash(prompt)
-                elif selected_llm == "Gemini 2.5 Pro":
-                    feedback = run_gemini_pro(prompt)
-                elif selected_llm == "Deepseek R1 (Together)":
+                elif selected_llm == "GPT-OSS 120B (Together)":
                     feedback = run_deepseek_r1_together(prompt)
-                elif selected_llm == "Llama 4 Scout (KlusterAI)":
-                    feedback = run_llama4_scout_klusterai(prompt)
-                elif selected_llm == "Ollama Phi-4 Mini Reasoning":
-                    feedback = run_ollama_phi4_mini_reasoning(prompt)
-                elif selected_llm == "Ollama Mistral Small 3.1":
-                    feedback = run_ollama_mistral_small3(prompt)
-                elif selected_llm == "Ollama Qwen3 14B":
-                    feedback = run_ollama_qwen3(prompt)
+                elif selected_llm == "Ollama GPT-OSS 20B":
+                    feedback = run_ollama_gpt_oss(prompt)
                 else:
                     feedback = "Error: Selected LLM not implemented"
                 end_time = time.time()

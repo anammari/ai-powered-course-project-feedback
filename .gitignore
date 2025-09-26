@@ -1,3 +1,6 @@
 secrets.env
 CLAUDE.md
 e2e.log
+err.txt
+f*.md
+update*.md

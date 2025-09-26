@@ -6,13 +6,9 @@ A professional, fully functional AI-Powered Course Project Feedback Generator bu
 
 - **Intuitive Streamlit UI** with clear sections for LLM selection, marking criteria, comments, and feedback generation
 - **Multiple LLM Integration** supporting:
-  - Gemini 2.0 Flash
-  - Gemini 2.5 Pro
-  - Deepseek R1 (via Together API)
-  - Llama 4 Scout (via KlusterAI)
-  - Ollama Phi-4 Mini Reasoning
-  - Ollama Mistral Small 3.1
-  - Ollama Qwen3 14B
+  - Gemini 2.5 Flash
+  - GPT-OSS 120B (via Together API)
+  - Ollama GPT-OSS 20B
 - **Dynamic Prompt Engineering** for generating structured, actionable feedback
 - **Flexible Feedback Options** including failing criteria feedback and learner-requested items
 
@@ -37,13 +33,12 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 3. Install the required dependencies:
 ```bash
-pip install streamlit google-generativeai together huggingface-hub openai ollama python-dotenv
+pip install streamlit google-generativeai together ollama python-dotenv
 ```
 
 4. Configure API keys in `secrets.env`:
 ```
 GEMINI_API_KEY=your_gemini_api_key
-KLUSTERAI_API_KEY=your_klusterai_api_key
 TOGETHER_API_KEY=your_together_api_key
 HF_TOKEN=your_huggingface_token
 ```
@@ -52,9 +47,7 @@ HF_TOKEN=your_huggingface_token
 ```bash
 # Install Ollama: https://ollama.com/download
 # Pull required models
-ollama pull phi4-mini-reasoning:latest
-ollama pull mistral-small3.1:24b-instruct-2503-q4_K_M
-ollama pull qwen3:14b
+ollama pull gpt-oss:20b
 ```
 
 ## Usage
